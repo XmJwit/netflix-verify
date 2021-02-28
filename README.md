@@ -2,21 +2,20 @@
 
 流媒体NetFlix解锁检测脚本，使用Go语言编写
 
+在VPS网络正常的情况下，哪怕是双栈网络也可在几秒内快速完成IPv4/IPv6的解锁判断
+
 ## 鸣谢
 
 1. 感谢 [@CoiaPrant](https://github.com/CoiaPrant) 指出对于地域检测更简便的方法
+2. 感谢 [@XmJwit](https://github.com/XmJwit) 解决了IPV6 Only VPS无法下载脚本的问题
 
 ## 功能实现
 
 - [X] 解锁情况判断
 - [X] 地域信息显示
-- [ ] 双栈检测 (暂不支持)
+- [X] 双栈网络测试
 
-#### 脚本已知缺陷（不支持双栈会发生什么？）
-
-如果这台VPS的网络同时支持IPV4/IPV6，脚本只会选择其一进行检测，如仅IPV6解锁而IPV4不解锁，但脚本是通过IPV4检测的，则该脚本会报告不解锁，反之同理。这样会导致明明可以解锁的(IPV4/IPV6)漏掉，这也是本脚本的缺陷，除非在VPS服务商仅提供单栈的情况下没有此问题。
-
-对于这种需要检测双栈的情况，建议拉到最下方，使用CoiaPrant开源的Unix Shell版本的脚本进行检测。
+**由于`1.0 Beta`版本存在很多问题，而网上大多数都是本项目1.0版本的一键运行命令，请使用下方`2.01`最新稳定版，请相互转告**
 
 ## 相关名词解释
 
@@ -33,15 +32,21 @@
 
 #### 2、懒人一键运行包（使用编译好的二进制文件执行本小程序）
 
-`wget -O nf https://cdn.jsdelivr.net/gh/XmJwit/netflix-verify/nf_1.1_linux_amd64 && chmod +x nf && clear && ./nf`
+##### 主下载链接:
+
+`wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.01/nf_2.01_linux_amd64 && chmod +x nf && clear && ./nf`
+
+##### 备用下载链接(支持IPV6):
+
+`wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.01_linux_amd64 && chmod +x nf && clear && ./nf`
 
 ## 效果演示图
 
-![f015c50b55fa4f97a87eae0babcb3cc7.png](https://img.leo.moe/images/2021/02/25/f015c50b55fa4f97a87eae0babcb3cc7.png)
+![07e78b00ec35bc32e9434be6937f585d.png](https://img.leo.moe/images/2021/02/26/07e78b00ec35bc32e9434be6937f585d.png)
 
-## @CoiaPrant の Linux Shell脚本
+## 第三方 Linux Shell脚本
 
-这是一个由 @CoiaPrant 开发的shell脚本哦，支持双栈的检测！
+这是一个由 @CoiaPrant 开发的shell版本的脚本，支持双栈的检测
 
 https://github.com/CoiaPrant/Netflix_Unlock_Information/
 
